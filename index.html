@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowSync — Private, Intelligent Offline Ledger</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0A0C10;
+      --card-bg: #13161C;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-emerald: #00D084;
+      --accent-gold: #F3C969;
+      --accent-blue: #38B6FF;
+      --text-main: #FFFFFF;
+      --text-muted: #8E9BAE;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Ambient Background Glow */
+    .ambient-glow {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 208, 132, 0.15) 0%, rgba(56, 182, 255, 0.05) 50%, transparent 70%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navbar */
+    header {
+      padding: 32px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-emerald);
+    }
+
+    .tag-badge {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-gold);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(0, 208, 132, 0.08);
+      border: 1px solid rgba(0, 208, 132, 0.3);
+      border-radius: 30px;
+      font-size: 13px;
+      color: var(--accent-emerald);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+      background: linear-gradient(180deg, #FFFFFF 30%, #8E9BAE 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-download {
+      background: var(--accent-emerald);
+      color: #0A0C10;
+      padding: 16px 36px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 208, 132, 0.25);
+    }
+
+    .btn-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0, 208, 132, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 16px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Trust Micro-Badge */
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    .trust-badge span.dot {
+      color: var(--accent-emerald);
+    }
+
+    /* App Interactive Mockup Box */
+    .mockup-wrapper {
+      max-width: 440px;
+      margin: 60px auto 100px;
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .mockup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .mockup-card {
+      background: #1A1E26;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    /* Bento Grid Features */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 100px;
+    }
+
+    .bento-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      transition: border 0.3s ease;
+    }
+
+    .bento-item:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .bento-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .bento-item h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .bento-item p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <div class="container">
+    <!-- Navbar -->
+    <header>
+      <div class="brand">
+        <div class="brand-dot"></div>
+        FLOWSYNC
+      </div>
+      <div class="tag-badge">OFFLINE-FIRST v1.0</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-pill">⚡ Natural Language Financial Ledger</div>
+      <h1>Track cashflow as fast<br>as you can type.</h1>
+      <p>
+        Pencatatan keuangan pintar tanpa form ribet. Ketik transaksi seperti chat biasa, biarkan engine lokal yang mengelompokkan secara otomatis. 100% Offline & Privat.
+      </p>
+      
+      <div class="cta-group">
+        <div class="btn-row">
+          <!-- Direct link ke file APK yang ada di repo yang sama -->
+          <a href="FlowSync_v1.0_Release.apk" download="FlowSync_v1.0_Release.apk" class="btn-download">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download APK (Android)
+          </a>
+          <a href="#features" class="btn-secondary">Explore Engine</a>
+        </div>
+
+        <!-- Micro-badge Trust & Safety -->
+        <div class="trust-badge">
+          <span class="dot">●</span> 100% Virus-Free Verified
+          <span style="opacity: 0.3;">|</span>
+          🔒 Direct Build
+          <span style="opacity: 0.3;">|</span>
+          ⚡ No Root Required
+        </div>
+      </div>
+    </section>
+
+    <!-- App Mockup Preview -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <div>
+          <div style="font-size: 13px; font-weight: 800; letter-spacing: 1.5px;">FLOWSYNC DASHBOARD</div>
+          <div style="font-size: 11px; color: var(--text-muted);">Encrypted Local Memory</div>
+        </div>
+        <div style="color: var(--accent-emerald); font-size: 12px; font-weight: 700;">● OFFLINE READY</div>
+      </div>
+
+      <!-- Mock Card 1 -->
+      <div class="mockup-card">
+        <div style="font-size: 10px; font-weight: 800; color: var(--accent-gold); letter-spacing: 1px; margin-bottom: 6px;">QUICK SCRATCHPAD</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #fff; margin-bottom: 8px;">"beli bensin pertamax 50rb"</div>
+        <span style="font-size: 10px; background: rgba(255, 92, 92, 0.15); color: #FF5C5C; padding: 3px 8px; border-radius: 6px; font-weight: 700;">EXPENSE: Rp 50.000</span>
+      </div>
+
+      <!-- Mock Card 2 -->
+      <div class="mockup-card">
+        <div style="font-size: 10px; font-weight: 800; color: var(--accent-emerald); letter-spacing: 1px; margin-bottom: 6px;">DAILY DIGEST</div>
+        <div style="display: flex; justify-content: space-between; font-size: 12px;">
+          <div><span style="color: var(--text-muted);">In:</span> <b style="color: var(--accent-emerald);">Rp 750.000</b></div>
+          <div><span style="color: var(--text-muted);">Out:</span> <b style="color: #FF5C5C;">Rp 112.000</b></div>
+          <div><span style="color: var(--text-muted);">Net:</span> <b>+Rp 638.000</b></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bento Grid Features -->
+    <section id="features" class="bento-grid">
+      <div class="bento-item">
+        <div class="bento-icon" style="background: rgba(0, 208, 132, 0.1); color: var(--accent-emerald);">🧠</div>
+        <h3>Smart Parser Engine</h3>
+        <p>Tulis kalimat campuran bahasa, kode part alfanumerik, maupun pengingat piutang. Engine cerdas membedakan transaksi dan catatan secara presisi.</p>
+      </div>
+
+      <div class="bento-item">
+        <div class="bento-icon" style="background: rgba(243, 201, 105, 0.1); color: var(--accent-gold);">🛡️</div>
+        <h3>100% Zero-Cloud Privacy</h3>
+        <p>Semua data tersimpan eksklusif di memori internal perangkat menggunakan Hive Database. Tanpa tracking, tanpa langganan server pihak ketiga.</p>
+      </div>
+
+      <div class="bento-item">
+        <div class="bento-icon" style="background: rgba(56, 182, 255, 0.1); color: var(--accent-blue);">🔒</div>
+        <h3>Biometric & Master PIN</h3>
+        <p>Fitur penyamar privasi angka instan dan kunci brankas dengan sensor sidik jari atau 4-digit PIN keamanan pribadi.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 FlowSync. Handcrafted for Speed & Total Privacy.</p>
+    </footer>
+  </div>
+
+</body>
+</html>
