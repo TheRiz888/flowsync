@@ -1,6 +1,6 @@
 {
   "latest_version": "1.0.0",
   "is_mandatory": false,
-  "apk_url": "https://github.com/TheRiz888/flowsync/releases/download/v1.0.0/FlowSync_v1.0.0.apk",
-  "changelog": "• Peluncuran Perdana FlowSync v1.0.0\n• Smart Batching Parser\n• Pratinjau Kertas Struk Virtual & Custom Store Header\n• Speed POS & Bluetooth Thermal Printer\n• Upcoming Kanban Board 2.0\n• Snapshot Data Safety Anti-Hilang"
+  "apk_url": "https://theriz888.github.io/flowsync/FlowSync_v1.0.0.apk",
+  "changelog": "• Peluncuran Perdana FlowSync v1.0.0\n• Smart Batching Parser\n• Pratinjau Kertas Struk Virtual & Custom Store Header\n• Speed POS & Bluetooth Thermal Printer\n• In-App Version Watermark & Build Tracker"
 }
