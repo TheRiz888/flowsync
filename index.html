@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlowSync — Private, Intelligent Offline Ledger</title>
+  <title>FlowSync — Private, Intelligent Offline Ledger & POS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -91,6 +91,7 @@
       font-size: 12px;
       font-weight: 600;
       color: var(--accent-gold);
+      transition: all 0.3s ease;
     }
 
     /* Hero Section */
@@ -127,7 +128,7 @@
     .hero p {
       font-size: 18px;
       color: var(--text-muted);
-      max-width: 640px;
+      max-width: 660px;
       margin: 0 auto 40px;
     }
 
@@ -290,23 +291,23 @@
         <div class="brand-dot"></div>
         FLOWSYNC
       </div>
-      <div class="tag-badge">OFFLINE-FIRST v1.0</div>
+      <div id="nav-version-badge" class="tag-badge">LATEST VERSION</div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-pill">⚡ Natural Language Financial Ledger</div>
+      <div class="hero-pill">⚡ Natural Language Cashflow & Speed POS</div>
       <h1>Track cashflow as fast<br>as you can type.</h1>
       <p>
-        Pencatatan keuangan pintar tanpa form ribet. Ketik transaksi seperti chat biasa, biarkan engine lokal yang mengelompokkan secara otomatis. 100% Offline & Privat.
+        Pencatatan keuangan pintar tanpa form ribet. Ketik belanjaan borongan, cetak struk via printer thermal bluetooth, dan kelola pesanan kanban. 100% Offline & Privat.
       </p>
       
       <div class="cta-group">
         <div class="btn-row">
-          <!-- Direct link ke file APK yang ada di repo yang sama -->
-          <a href="FlowSync_v1.1.9_Premium.apk" download="FlowSync_v1.1.9_Premium.apk" class="btn-download">
+          <!-- Tombol Download Dinamis (Otomatis Disuntik Link APK Terbaru dari version.json) -->
+          <a id="download-btn" href="FlowSync_v1.1.9_Premium.apk" class="btn-download">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            Download APK (Android)
+            <span id="download-btn-text">Download APK (Android)</span>
           </a>
           <a href="#features" class="btn-secondary">Explore Engine</a>
         </div>
@@ -334,18 +335,18 @@
 
       <!-- Mock Card 1 -->
       <div class="mockup-card">
-        <div style="font-size: 10px; font-weight: 800; color: var(--accent-gold); letter-spacing: 1px; margin-bottom: 6px;">QUICK SCRATCHPAD</div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #fff; margin-bottom: 8px;">"beli bensin pertamax 50rb"</div>
-        <span style="font-size: 10px; background: rgba(255, 92, 92, 0.15); color: #FF5C5C; padding: 3px 8px; border-radius: 6px; font-weight: 700;">EXPENSE: Rp 50.000</span>
+        <div style="font-size: 10px; font-weight: 800; color: var(--accent-gold); letter-spacing: 1px; margin-bottom: 6px;">MULTI-ITEM SCRATCHPAD</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff; margin-bottom: 8px;">"ayam 1/2kg @38k, cabe 2 ons @40k #Resto"</div>
+        <span style="font-size: 10px; background: rgba(0, 208, 132, 0.15); color: #00D084; padding: 3px 8px; border-radius: 6px; font-weight: 700;">AUTO-PARSED (2 ITEMS)</span>
       </div>
 
       <!-- Mock Card 2 -->
       <div class="mockup-card">
         <div style="font-size: 10px; font-weight: 800; color: var(--accent-emerald); letter-spacing: 1px; margin-bottom: 6px;">DAILY DIGEST</div>
         <div style="display: flex; justify-content: space-between; font-size: 12px;">
-          <div><span style="color: var(--text-muted);">In:</span> <b style="color: var(--accent-emerald);">Rp 750.000</b></div>
-          <div><span style="color: var(--text-muted);">Out:</span> <b style="color: #FF5C5C;">Rp 112.000</b></div>
-          <div><span style="color: var(--text-muted);">Net:</span> <b>+Rp 638.000</b></div>
+          <div><span style="color: var(--text-muted);">In:</span> <b style="color: var(--accent-emerald);">Rp 850.000</b></div>
+          <div><span style="color: var(--text-muted);">Out:</span> <b style="color: #FF5C5C;">Rp 127.000</b></div>
+          <div><span style="color: var(--text-muted);">Net:</span> <b>+Rp 723.000</b></div>
         </div>
       </div>
     </div>
@@ -354,20 +355,26 @@
     <section id="features" class="bento-grid">
       <div class="bento-item">
         <div class="bento-icon" style="background: rgba(0, 208, 132, 0.1); color: var(--accent-emerald);">🧠</div>
-        <h3>Smart Parser Engine</h3>
-        <p>Tulis kalimat campuran bahasa, kode part alfanumerik, maupun pengingat piutang. Engine cerdas membedakan transaksi dan catatan secara presisi.</p>
+        <h3>Smart Batching Parser</h3>
+        <p>Tulis belanjaan borongan dipisah tanda koma beserta pecahan (1/2kg, 2 ons @harga). Engine otomatis menghitung perkalian harga dan satuan secara instan.</p>
       </div>
 
       <div class="bento-item">
-        <div class="bento-icon" style="background: rgba(243, 201, 105, 0.1); color: var(--accent-gold);">🛡️</div>
-        <h3>100% Zero-Cloud Privacy</h3>
-        <p>Semua data tersimpan eksklusif di memori internal perangkat menggunakan Hive Database. Tanpa tracking, tanpa langganan server pihak ketiga.</p>
+        <div class="bento-icon" style="background: rgba(56, 182, 255, 0.1); color: var(--accent-blue);">🖨️</div>
+        <h3>Speed POS & Bluetooth Thermal</h3>
+        <p>Cetak struk nota kasir ke printer thermal bluetooth dalam 1 detik atau salin teks invoice pembayaran rapi yang siap dikirim langsung ke WhatsApp pelanggan.</p>
       </div>
 
       <div class="bento-item">
-        <div class="bento-icon" style="background: rgba(56, 182, 255, 0.1); color: var(--accent-blue);">🔒</div>
-        <h3>Biometric & Master PIN</h3>
-        <p>Fitur penyamar privasi angka instan dan kunci brankas dengan sensor sidik jari atau 4-digit PIN keamanan pribadi.</p>
+        <div class="bento-icon" style="background: rgba(243, 201, 105, 0.1); color: var(--accent-gold);">📋</div>
+        <h3>Upcoming Kanban Board</h3>
+        <p>Papan manajemen pesanan pelanggan interaktif. Geser status antrean dan gunakan fitur 1-Tap Convert untuk langsung membukukan pesanan selesai ke arus kas.</p>
+      </div>
+
+      <div class="bento-item">
+        <div class="bento-icon" style="background: rgba(255, 92, 92, 0.1); color: #FF5C5C);">🛡️</div>
+        <h3>Pre-Update Snapshot Safety</h3>
+        <p>Pembaruan aplikasi mandiri tanpa rasa takut. Database kasir dicadangkan otomatis ke slot brankas darurat sebelum file APK ditimpa ke versi terbaru.</p>
       </div>
     </section>
 
@@ -377,5 +384,32 @@
     </footer>
   </div>
 
+  <!-- Auto-Sync APK Download Link dari version.json -->
+  <script>
+    const VERSION_JSON_URL = 'https://raw.githubusercontent.com/TheRiz88/flowsync/main/version.json';
+
+    fetch(VERSION_JSON_URL)
+      .then(response => {
+        if (!response.ok) throw new Error('Gagal memuat JSON');
+        return response.json();
+      })
+      .then(data => {
+        const downloadBtn = document.getElementById('download-btn');
+        const btnText = document.getElementById('download-btn-text');
+        const navBadge = document.getElementById('nav-version-badge');
+
+        if (data.apk_url && downloadBtn) {
+          downloadBtn.href = data.apk_url;
+        }
+
+        if (data.latest_version) {
+          if (btnText) btnText.textContent = `Download APK v${data.latest_version} (Android)`;
+          if (navBadge) navBadge.textContent = `OFFLINE-FIRST v${data.latest_version}`;
+        }
+      })
+      .catch(err => {
+        console.log('Menggunakan tautan fallback APK:', err);
+      });
+  </script>
 </body>
 </html>
