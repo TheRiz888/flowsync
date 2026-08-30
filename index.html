@@ -34,7 +34,6 @@
       line-height: 1.6;
     }
 
-    /* Ambient Background Glow */
     .ambient-glow {
       position: absolute;
       top: -150px;
@@ -56,7 +55,6 @@
       z-index: 1;
     }
 
-    /* Navbar */
     header {
       padding: 32px 0;
       display: flex;
@@ -91,10 +89,8 @@
       font-size: 12px;
       font-weight: 600;
       color: var(--accent-gold);
-      transition: all 0.3s ease;
     }
 
-    /* Hero Section */
     .hero {
       text-align: center;
       padding: 80px 0 60px;
@@ -184,7 +180,6 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
-    /* Trust Micro-Badge */
     .trust-badge {
       display: inline-flex;
       align-items: center;
@@ -201,7 +196,6 @@
       color: var(--accent-emerald);
     }
 
-    /* App Interactive Mockup Box */
     .mockup-wrapper {
       max-width: 440px;
       margin: 60px auto 100px;
@@ -228,7 +222,6 @@
       margin-bottom: 12px;
     }
 
-    /* Bento Grid Features */
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -271,7 +264,6 @@
       line-height: 1.6;
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding: 40px 0;
@@ -286,7 +278,6 @@
   <div class="ambient-glow"></div>
 
   <div class="container">
-    <!-- Navbar -->
     <header>
       <div class="brand">
         <div class="brand-dot"></div>
@@ -295,7 +286,6 @@
       <div id="nav-version-badge" class="tag-badge">OFFLINE-FIRST v1.0.0</div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-pill">⚡ Natural Language Cashflow & Speed POS</div>
       <h1>Track cashflow as fast<br>as you can type.</h1>
@@ -305,7 +295,7 @@
       
       <div class="cta-group">
         <div class="btn-row">
-          <!-- Tombol Download Langsung Mengarah ke Jalur Resmi GitHub Releases -->
+          <!-- Tautan Permanen ke Jalur Resmi GitHub Releases -->
           <a id="download-btn" 
              href="https://github.com/TheRiz88/flowsync/releases/download/v1.0.0/FlowSync_v1.0.0.apk" 
              class="btn-download">
@@ -319,7 +309,6 @@
           <a href="#features" class="btn-secondary">Explore Engine</a>
         </div>
 
-        <!-- Micro-badge Trust & Safety -->
         <div class="trust-badge">
           <span class="dot">●</span> 100% Virus-Free Verified
           <span style="opacity: 0.3;">|</span>
@@ -330,7 +319,6 @@
       </div>
     </section>
 
-    <!-- App Mockup Preview -->
     <div class="mockup-wrapper">
       <div class="mockup-header">
         <div>
@@ -340,14 +328,12 @@
         <div style="color: var(--accent-emerald); font-size: 12px; font-weight: 700;">● OFFLINE READY</div>
       </div>
 
-      <!-- Mock Card 1 -->
       <div class="mockup-card">
         <div style="font-size: 10px; font-weight: 800; color: var(--accent-gold); letter-spacing: 1px; margin-bottom: 6px;">MULTI-ITEM SCRATCHPAD</div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff; margin-bottom: 8px;">"ayam 1/2kg @38k, cabe 2 ons @40k #Resto"</div>
         <span style="font-size: 10px; background: rgba(0, 208, 132, 0.15); color: #00D084; padding: 3px 8px; border-radius: 6px; font-weight: 700;">AUTO-PARSED (2 ITEMS)</span>
       </div>
 
-      <!-- Mock Card 2 -->
       <div class="mockup-card">
         <div style="font-size: 10px; font-weight: 800; color: var(--accent-emerald); letter-spacing: 1px; margin-bottom: 6px;">DAILY DIGEST</div>
         <div style="display: flex; justify-content: space-between; font-size: 12px;">
@@ -358,7 +344,6 @@
       </div>
     </div>
 
-    <!-- Bento Grid Features -->
     <section id="features" class="bento-grid">
       <div class="bento-item">
         <div class="bento-icon" style="background: rgba(0, 208, 132, 0.1); color: var(--accent-emerald);">🧠</div>
@@ -385,38 +370,10 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer>
       <p>© 2026 FlowSync. Handcrafted for Speed & Total Privacy.</p>
     </footer>
   </div>
 
-  <!-- Sinkronisasi Dinamis Cadangan dari version.json -->
-  <script>
-    const VERSION_JSON_URL = 'https://raw.githubusercontent.com/TheRiz88/flowsync/main/version.json?t=' + Date.now();
-
-    fetch(VERSION_JSON_URL)
-      .then(response => {
-        if (!response.ok) throw new Error('Gagal membaca version.json');
-        return response.json();
-      })
-      .then(data => {
-        const downloadBtn = document.getElementById('download-btn');
-        const btnText = document.getElementById('download-btn-text');
-        const navBadge = document.getElementById('nav-version-badge');
-
-        if (data.apk_url && downloadBtn) {
-          downloadBtn.href = data.apk_url;
-        }
-
-        if (data.latest_version) {
-          if (btnText) btnText.textContent = `Download APK v${data.latest_version} (Android)`;
-          if (navBadge) navBadge.textContent = `OFFLINE-FIRST v${data.latest_version}`;
-        }
-      })
-      .catch(err => {
-        console.log('Menggunakan tautan rilis default yang sudah terpasang:', err);
-      });
-  </script>
 </body>
 </html>
