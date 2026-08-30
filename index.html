@@ -384,9 +384,10 @@
     </footer>
   </div>
 
-  <!-- Auto-Sync APK Download Link dari version.json -->
+  <!-- Auto-Sync APK Download Link dengan Anti-Cache -->
   <script>
-    const VERSION_JSON_URL = 'https://raw.githubusercontent.com/TheRiz88/flowsync/main/version.json';
+    // Penambahan '?t=' + Date.now() memaksa browser selalu meminta data paling mutakhir dari server
+    const VERSION_JSON_URL = 'https://raw.githubusercontent.com/TheRiz88/flowsync/main/version.json?t=' + Date.now();
 
     fetch(VERSION_JSON_URL)
       .then(response => {
