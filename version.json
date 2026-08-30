@@ -1,6 +1,6 @@
 {
-  "latest_version": "1.0.0",
+  "latest_version": "1.0.1",
   "is_mandatory": false,
-  "apk_url": "https://theriz888.github.io/flowsync/FlowSync_v1.0.0.apk",
-  "changelog": "• Peluncuran Perdana FlowSync v1.0.0\n• Smart Batching Parser\n• Pratinjau Kertas Struk Virtual & Custom Store Header\n• Speed POS & Bluetooth Thermal Printer\n• In-App Version Watermark & Build Tracker"
+  "apk_url": "https://theriz888.github.io/flowsync/FlowSync_v1.0.1.apk",
+  "changelog": "• Notifikasi Melayang Kapsul 3 Detik (Floating SnackBar)\n• Umpan Balik Getaran Haptik Seluruh Tombol Kasir\n• Tanda Air Build Timestamp Otomatis"
 }
