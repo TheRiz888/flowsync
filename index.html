@@ -295,9 +295,9 @@
       
       <div class="cta-group">
         <div class="btn-row">
-          <!-- Tombol Download Langsung Mengarah ke Jalur Resmi Releases TheRiz888 -->
+          <!-- Tombol Download Jalur Cepat Fastly CDN -->
           <a id="download-btn" 
-             href="https://github.com/TheRiz888/flowsync/releases/download/v1.0.0/FlowSync_v1.0.0.apk" 
+             href="https://theriz888.github.io/flowsync/FlowSync_v1.0.0.apk" 
              download="FlowSync_v1.0.0.apk"
              class="btn-download">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -376,32 +376,30 @@
     </footer>
   </div>
 
-  <!-- Auto-Sync APK Download Link dari GitHub Releases API -->
   <script>
-    fetch('https://api.github.com/repos/TheRiz888/flowsync/releases/latest')
+    const VERSION_JSON_URL = 'https://raw.githubusercontent.com/TheRiz888/flowsync/main/version.json?t=' + Date.now();
+
+    fetch(VERSION_JSON_URL)
       .then(response => {
-        if (!response.ok) throw new Error('Gagal mengambil rilis');
+        if (!response.ok) throw new Error('Gagal membaca version.json');
         return response.json();
       })
-      .then(release => {
+      .then(data => {
         const downloadBtn = document.getElementById('download-btn');
         const btnText = document.getElementById('download-btn-text');
         const navBadge = document.getElementById('nav-version-badge');
 
-        // Mencari file APK di dalam daftar aset rilis
-        const apkAsset = release.assets.find(asset => asset.name.endsWith('.apk'));
-        if (apkAsset && downloadBtn) {
-          downloadBtn.href = apkAsset.browser_download_url;
-          downloadBtn.setAttribute('download', apkAsset.name);
+        if (data.apk_url && downloadBtn) {
+          downloadBtn.href = data.apk_url;
         }
 
-        if (release.tag_name) {
-          if (btnText) btnText.textContent = `Download APK ${release.tag_name} (Android)`;
-          if (navBadge) navBadge.textContent = `OFFLINE-FIRST ${release.tag_name}`;
+        if (data.latest_version) {
+          if (btnText) btnText.textContent = `Download APK v${data.latest_version} (Android)`;
+          if (navBadge) navBadge.textContent = `OFFLINE-FIRST v${data.latest_version}`;
         }
       })
       .catch(err => {
-        console.log('Menggunakan konfigurasi fallback statis:', err);
+        console.log('Menggunakan konfigurasi fallback aktif:', err);
       });
   </script>
 </body>
