@@ -1,6 +1,6 @@
 {
   "latest_version": "1.0.0",
   "is_mandatory": false,
-  "apk_url": "https://raw.githubusercontent.com/TheRiz88/flowsync/main/FlowSync_v1.1.9_Premium.apk",
-  "changelog": "• Papan Pesanan Kanban 2.0 (1-Tap Convert to Cash)\n• Smart Unit Conversion (Hitung Gram & Ons Otomatis)\n• Cetak Slip Audit Bulanan via Bluetooth Thermal\n• Cadangan Data Otomatis Anti-Hilang"
+  "apk_url": "https://raw.githubusercontent.com/TheRiz88/flowsync/main/FlowSync_v1.0.0.apk",
+  "changelog": "• Peluncuran Perdana FlowSync v1.0.0\n• Smart Batching Parser\n• Pratinjau Kertas Struk Virtual & Custom Store Header\n• Speed POS & Bluetooth Thermal Printer\n• Upcoming Kanban Board 2.0\n• Snapshot Data Safety Anti-Hilang"
 }
