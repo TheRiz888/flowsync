@@ -376,31 +376,32 @@
     </footer>
   </div>
 
-  <!-- Sinkronisasi Dinamis dari version.json TheRiz888 -->
+  <!-- Auto-Sync APK Download Link dari GitHub Releases API -->
   <script>
-    const VERSION_JSON_URL = 'https://raw.githubusercontent.com/TheRiz888/flowsync/main/version.json?t=' + Date.now();
-
-    fetch(VERSION_JSON_URL)
+    fetch('https://api.github.com/repos/TheRiz888/flowsync/releases/latest')
       .then(response => {
-        if (!response.ok) throw new Error('Gagal membaca version.json');
+        if (!response.ok) throw new Error('Gagal mengambil rilis');
         return response.json();
       })
-      .then(data => {
+      .then(release => {
         const downloadBtn = document.getElementById('download-btn');
         const btnText = document.getElementById('download-btn-text');
         const navBadge = document.getElementById('nav-version-badge');
 
-        if (data.apk_url && downloadBtn) {
-          downloadBtn.href = data.apk_url;
+        // Mencari file APK di dalam daftar aset rilis
+        const apkAsset = release.assets.find(asset => asset.name.endsWith('.apk'));
+        if (apkAsset && downloadBtn) {
+          downloadBtn.href = apkAsset.browser_download_url;
+          downloadBtn.setAttribute('download', apkAsset.name);
         }
 
-        if (data.latest_version) {
-          if (btnText) btnText.textContent = `Download APK v${data.latest_version} (Android)`;
-          if (navBadge) navBadge.textContent = `OFFLINE-FIRST v${data.latest_version}`;
+        if (release.tag_name) {
+          if (btnText) btnText.textContent = `Download APK ${release.tag_name} (Android)`;
+          if (navBadge) navBadge.textContent = `OFFLINE-FIRST ${release.tag_name}`;
         }
       })
       .catch(err => {
-        console.log('Menggunakan tautan fallback rilis default:', err);
+        console.log('Menggunakan konfigurasi fallback statis:', err);
       });
   </script>
 </body>
