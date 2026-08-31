@@ -1,9 +1,9 @@
 ﻿{
-    "latest_version":  "1.1.4",
+    "latest_version":  "1.1.5",
     "is_mandatory":  false,
-    "apk_url":  "https://theriz888.github.io/flowsync/FlowSync_v1.1.4.apk",
-    "apk_latest_url":  "https://theriz888.github.io/flowsync/FlowSync_latest.apk",
-    "file_size":  "20.5 MB",
-    "sha256":  "eb61397d10de366d696344e537376d20d30c90b33c6d1da581d660df13ecf501",
-    "changelog":  "- Turbo Build Lokal Komputer (ARM64-v8a)\r\n- Sertifikat Keystore Permanen Terverifikasi\r\n- Integritas SHA-256: \r\neb61397d\r\n..."
+    "apk_url":  "https://raw.githubusercontent.com/TheRiz888/flowsync/main/FlowSync_v1.1.5.apk",
+    "apk_latest_url":  "https://raw.githubusercontent.com/TheRiz888/flowsync/main/FlowSync_latest.apk",
+    "file_size":  "20.4 MB",
+    "sha256":  "23d74a71d9ef245b4f9581accf21397f4e2081ca9fcd56ae4b67f1c6f41b600a",
+    "changelog":  "- Server Tautan Mentah (Raw) Anti-404\r\n- Turbo Build Lokal Komputer (ARM64-v8a)\r\n- Sertifikat Keystore Permanen Terverifikasi\r\n- Integritas SHA-256: \r\n23d74a71\r\n..."
 }
