@@ -1,6 +1,7 @@
 {
-  "latest_version": "1.0.1",
+  "latest_version": "1.0.3",
   "is_mandatory": false,
-  "apk_url": "https://theriz888.github.io/flowsync/FlowSync_v1.0.1.apk",
-  "changelog": "• Notifikasi Melayang Kapsul 3 Detik (Floating SnackBar)\n• Umpan Balik Getaran Haptik Seluruh Tombol Kasir\n• Tanda Air Build Timestamp Otomatis"
+  "apk_url": "https://github.com/TheRiz888/FlowSync-App/releases/download/v1.0.3/FlowSync_v1.0.3.apk",
+  "sha256": "3fe488309445f9960f5ef7c1b6bac7f8b2236b8d77e6ac56200ae20121c052e7",
+  "changelog": "• Pembaruan Otomatis Terverifikasi via CI/CD Engine\n• Verifikasi Keamanan Anti-Tamper SHA-256: 3fe48830...\n• Direct In-App Download Progress Tracker"
 }
