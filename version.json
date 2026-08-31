@@ -1,9 +1,9 @@
-{
-  "latest_version": "1.0.11",
-  "is_mandatory": false,
-  "apk_url": "https://theriz888.github.io/flowsync/FlowSync_v1.0.11.apk?ts=1788147938",
-  "apk_latest_url": "https://theriz888.github.io/flowsync/FlowSync_latest.apk?ts=1788147938",
-  "file_size": "17.0 MB",
-  "sha256": "bcd918b15ff166d5758f60e5f015963f6a28b086adf8b34b1f653ec29b19cb35",
-  "changelog": "• Jalur Unduh Super Kencang Fastly CDN Publik\n• Perlindungan Keamanan Integritas SHA-256: bcd918b1...\n• Direct In-App Background Download Tracker"
+﻿{
+    "latest_version":  "1.1.4",
+    "is_mandatory":  false,
+    "apk_url":  "https://theriz888.github.io/flowsync/FlowSync_v1.1.4.apk?ts=1788154514",
+    "apk_latest_url":  "https://theriz888.github.io/flowsync/FlowSync_latest.apk?ts=1788154514",
+    "file_size":  "20.5 MB",
+    "sha256":  "eb61397d10de366d696344e537376d20d30c90b33c6d1da581d660df13ecf501",
+    "changelog":  "- Turbo Build Lokal Komputer (ARM64-v8a)\r\n- Sertifikat Keystore Permanen Terverifikasi\r\n- Integritas SHA-256: \r\neb61397d\r\n..."
 }
