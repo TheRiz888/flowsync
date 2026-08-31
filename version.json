@@ -1,7 +1,7 @@
 {
-  "latest_version": "1.0.3",
+  "latest_version": "1.0.4",
   "is_mandatory": false,
-  "apk_url": "https://github.com/TheRiz888/FlowSync-App/releases/download/v1.0.3/FlowSync_v1.0.3.apk",
-  "sha256": "3fe488309445f9960f5ef7c1b6bac7f8b2236b8d77e6ac56200ae20121c052e7",
-  "changelog": "• Pembaruan Otomatis Terverifikasi via CI/CD Engine\n• Verifikasi Keamanan Anti-Tamper SHA-256: 3fe48830...\n• Direct In-App Download Progress Tracker"
+  "apk_url": "https://theriz888.github.io/flowsync/FlowSync_v1.0.4.apk",
+  "sha256": "a66c5c4624ce428611aba035cf0d6050910bb54adec070354c4323d34b62999b",
+  "changelog": "• Jalur Unduh Super Kencang Fastly CDN Publik\n• Perlindungan Keamanan Integritas SHA-256: a66c5c46...\n• Direct In-App Download Progress Tracker"
 }
