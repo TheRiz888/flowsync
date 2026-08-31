@@ -1,9 +1,9 @@
 {
-  "latest_version": "1.0.6",
+  "latest_version": "1.0.7",
   "is_mandatory": false,
-  "apk_url": "https://theriz888.github.io/flowsync/FlowSync_v1.0.6.apk?ts=1788140650",
-  "apk_latest_url": "https://theriz888.github.io/flowsync/FlowSync_latest.apk?ts=1788140650",
+  "apk_url": "https://theriz888.github.io/flowsync/FlowSync_v1.0.7.apk?ts=1788143330",
+  "apk_latest_url": "https://theriz888.github.io/flowsync/FlowSync_latest.apk?ts=1788143330",
   "file_size": "17.0 MB",
-  "sha256": "10f137643e1142a79a132efa10015799b747e13146f84738a99df1e1bba43a8e",
-  "changelog": "• Jalur Unduh Super Kencang Fastly CDN Publik\n• Perlindungan Keamanan Integritas SHA-256: 10f13764...\n• Direct In-App Background Download Tracker"
+  "sha256": "eb1bd41b1b91df6ee74159be63664b518e568d7569e05821b1c9ae02afef87d9",
+  "changelog": "• Jalur Unduh Super Kencang Fastly CDN Publik\n• Perlindungan Keamanan Integritas SHA-256: eb1bd41b...\n• Direct In-App Background Download Tracker"
 }
