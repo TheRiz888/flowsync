@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlowSync - Smart Cashflow & Point of Sale</title>
-  <meta name="description" content="Aplikasi kasir pintar, multi-item scratchpad, offline-first dengan verifikasi integritas data kriptografi." />
+  <title>FlowSync - Smart Cashflow & Point of Sale Engine</title>
+  <meta name="description" content="Aplikasi kasir pintar multi-item scratchpad offline-first dengan verifikasi integritas audit kriptografi." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg-dark: #090B0E;
-      --card-bg: #13171F;
+      --bg-dark: #07090C;
+      --card-bg: #11141B;
       --card-border: rgba(255, 255, 255, 0.08);
       --accent: #00D084;
       --accent-glow: rgba(0, 208, 132, 0.25);
       --text-main: #FFFFFF;
       --text-muted: #8E9BAE;
       --warning: #F3C969;
+      --pwa-accent: #38BDF8;
     }
 
     * {
@@ -38,17 +39,17 @@
       align-items: center;
       justify-content: space-between;
       overflow-x: hidden;
-      padding: 24px 16px;
+      padding: 32px 16px;
     }
 
     .ambient-glow {
       position: absolute;
-      top: -120px;
+      top: -140px;
       left: 50%;
       transform: translateX(-50%);
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(9, 11, 14, 0) 70%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(7, 9, 12, 0) 70%);
       z-index: 0;
       pointer-events: none;
     }
@@ -56,7 +57,7 @@
     .container {
       position: relative;
       z-index: 1;
-      max-width: 680px;
+      max-width: 720px;
       width: 100%;
       margin: auto;
       text-align: center;
@@ -94,7 +95,7 @@
     }
 
     h1 {
-      font-size: 38px;
+      font-size: 40px;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 14px;
@@ -116,8 +117,8 @@
       border: 1px solid var(--card-border);
       border-radius: 24px;
       padding: 28px 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      margin-bottom: 36px;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+      margin-bottom: 32px;
       text-align: left;
     }
 
@@ -165,6 +166,19 @@
       border: 1px solid rgba(243, 201, 105, 0.2);
     }
 
+    .action-container {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
     .btn-download {
       display: flex;
       align-items: center;
@@ -175,8 +189,8 @@
       color: #000;
       text-decoration: none;
       font-weight: 800;
-      font-size: 15px;
-      padding: 16px 20px;
+      font-size: 14px;
+      padding: 15px 20px;
       border-radius: 14px;
       transition: all 0.2s ease;
       box-shadow: 0 8px 24px var(--accent-glow);
@@ -187,21 +201,65 @@
       box-shadow: 0 12px 30px rgba(0, 208, 132, 0.4);
     }
 
-    .btn-download:active {
-      transform: translateY(1px);
+    .btn-pwa-demo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--pwa-accent);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-pwa-demo:hover {
+      background: rgba(56, 189, 248, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .qr-desktop-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #090B0E;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      text-align: center;
+    }
+
+    .qr-desktop-box img {
+      width: 110px;
+      height: 110px;
+      border-radius: 8px;
+      background: #FFF;
+      padding: 6px;
+    }
+
+    .qr-desktop-box span {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 600;
     }
 
     .meta-details {
       display: flex;
       justify-content: space-between;
-      margin-top: 14px;
+      margin-top: 18px;
       font-size: 12px;
       color: var(--text-muted);
       font-family: 'JetBrains Mono', monospace;
     }
 
     .security-hash {
-      margin-top: 16px;
+      margin-top: 14px;
       background: rgba(0, 0, 0, 0.4);
       padding: 10px 12px;
       border-radius: 10px;
@@ -225,7 +283,7 @@
     }
 
     .feature-item {
-      background: rgba(19, 23, 31, 0.6);
+      background: rgba(17, 20, 27, 0.6);
       border: 1px solid var(--card-border);
       border-radius: 16px;
       padding: 16px;
@@ -255,8 +313,10 @@
       color: var(--text-muted);
     }
 
-    @media (max-width: 520px) {
-      h1 { font-size: 28px; }
+    @media (max-width: 640px) {
+      h1 { font-size: 30px; }
+      .action-container { grid-template-columns: 1fr; }
+      .qr-desktop-box { display: none; }
       .features-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -285,14 +345,32 @@
         <div class="app-version-badge" id="versionBadge">v1.0.0</div>
       </div>
 
-      <a id="downloadButton" href="FlowSync_latest.apk" class="btn-download" download>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        <span id="downloadBtnText">Unduh APK Terbaru</span>
-      </a>
+      <div class="action-container">
+        <div class="button-group">
+          <a id="downloadButton" href="FlowSync_latest.apk" class="btn-download" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span id="downloadBtnText">Unduh APK Terbaru</span>
+          </a>
+
+          <a id="btnPwaDemo" href="./demo/" class="btn-pwa-demo" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span>Coba Simulasi Kasir di Web (PWA)</span>
+          </a>
+        </div>
+
+        <div class="qr-desktop-box">
+          <img id="qrInstallerImg" src="" alt="Scan QR Installer" />
+          <span>Scan via HP Kasir</span>
+        </div>
+      </div>
 
       <div class="meta-details">
         <span>Ukuran: <b id="fileSizeText" style="color: #FFF;">-- MB</b></span>
@@ -329,7 +407,6 @@
   </div>
 
   <script>
-    // Membaca version.json secara dinamis dengan parameter Cache-Busting
     const timestamp = new Date().getTime();
     fetch(`version.json?ts=${timestamp}`)
       .then(response => {
@@ -342,6 +419,7 @@
         const badge = document.getElementById('versionBadge');
         const sizeText = document.getElementById('fileSizeText');
         const shaText = document.getElementById('sha256Text');
+        const qrImg = document.getElementById('qrInstallerImg');
 
         if (data.latest_version) {
           badge.innerText = `v${data.latest_version}`;
@@ -350,6 +428,10 @@
 
         if (data.apk_url) {
           btn.href = data.apk_url;
+          // Buat QR Code dinamis langsung mengarah ke URL APK
+          if (qrImg) {
+            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(data.apk_url)}&bgcolor=ffffff&color=07090c&margin=4`;
+          }
         }
 
         if (data.file_size) {
