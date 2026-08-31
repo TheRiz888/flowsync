@@ -1,9 +1,9 @@
 ﻿{
-    "latest_version":  "1.1.9",
+    "latest_version":  "1.2.0",
     "is_mandatory":  false,
-    "apk_url":  "https://theriz888.github.io/flowsync/FlowSync_latest.apk?v=1.1.9",
-    "apk_latest_url":  "https://theriz888.github.io/flowsync/FlowSync_latest.apk?v=1.1.9",
+    "apk_url":  "https://theriz888.github.io/flowsync/FlowSync_latest.apk?v=1.2.0",
+    "apk_latest_url":  "https://theriz888.github.io/flowsync/FlowSync_latest.apk?v=1.2.0",
     "file_size":  "20.4 MB",
-    "sha256":  "68c89015bdd9733b8cd9e1d873ee6fdc74dd76019cb9f80f28d1f4c05b8962e5",
-    "changelog":  "- Pembaruan OTA Stabil (Single APK Mode)\n- Keystore Permanen Terverifikasi\n- Integritas SHA-256: 68c89015"
+    "sha256":  "17dabe6ff6f6c85a5c0a3d3e1459e5a12318f67b6ec8648b3df7b5ac815ee857",
+    "changelog":  "- Pembaruan OTA Stabil (Single APK Mode)\n- Keystore Permanen Terverifikasi\n- Integritas SHA-256: 17dabe6f"
 }
